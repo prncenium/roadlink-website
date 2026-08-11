@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-base text-body antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold text-ink;
+    text-wrap: balance;
+  }
+
+  h1 {
+    @apply text-h1;
+  }
+  h2 {
+    @apply text-h2;
+  }
+  h3 {
+    @apply text-h3;
+  }
+  h4 {
+    @apply text-h4;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-white;
+  }
+
+  .on-dark :focus-visible {
+    @apply ring-accent ring-offset-primary-dark;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-ink;
+  }
+}
+
+/* ==========================================================================
+   COMPONENT PRIMITIVES
+   ========================================================================== */
+@layer components {
+  /* 1240px content well */
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-10;
+  }
+
+  /* Generous vertical rhythm: py-16 mobile → py-24/28 desktop */
+  .section-y {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  /* Mono uppercase eyebrow — accent-ink, not accent: at 11px this is small
+     text, and #FF6B35 only reaches 2.76:1 on white. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 font-mono text-eyebrow font-medium uppercase tracking-eyebrow text-accent-ink;
+  }
+
+  .eyebrow-muted {
+    @apply text-muted;
+  }
+
+  /* Amber/orange keyword underline. Uses text-decoration rather than an
+     ::after bar — an inline-block span takes its shrink-to-fit width from the
+     full available line width when the phrase wraps, which stretches the rule
+     across the whole column and orphans trailing punctuation. */
+  .accent-underline {
+    text-decoration-line: underline;
+    text-decoration-color: theme('colors.accent.DEFAULT');
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.16em;
+    text-decoration-skip-ink: none;
+  }
+
+  /* Keyword rendered in the accent colour (no underline).
+     accent-ink on light: even at display size #FF6B35 is 2.76:1, under the
+     3:1 large-text floor. */
+  .accent-word {
+    @apply text-accent-ink;
+  }
+
+  /* ...but accent-ink is a DARK orange, so on the navy bands it collapses to
+     2.42:1. Flip back to the bright accent there (4.47:1 on #0A3358). */
+  .on-dark .accent-word {
+    @apply text-accent;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-overlay
+           focus:rounded-xl focus:bg-ink focus:px-4 focus:py-2.5 focus:text-small
+           focus:font-semibold focus:text-white;
+  }
+
+  /* Nav link with underline-grow */
+  .nav-link {
+    @apply relative inline-flex items-center text-small font-medium text-body
+           transition-colors duration-200 hover:text-ink;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full
+           bg-accent transition-transform duration-300 ease-out;
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    @apply scale-x-100;
+  }
+  .nav-link[aria-current='page'] {
+    @apply text-ink;
+  }
+  .nav-link[aria-current='page']::after {
+    @apply scale-x-100;
+  }
+
+  /* Hairline rule */
+  .rule {
+    @apply h-px w-full bg-hairline;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+@layer utilities {
+  .bg-dots {
+    background-image: theme('backgroundImage.dots');
+    background-size: 22px 22px;
+  }
+
+  .bg-dots-dark {
+    background-image: theme('backgroundImage.dots-dark');
+    background-size: 22px 22px;
+  }
+
+  .measure {
+    @apply max-w-prose;
+  }
+
+  /* Fade a decorative texture out towards an edge */
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
+    mask-image: linear-gradient(to right, black 30%, transparent 100%);
+  }
+}

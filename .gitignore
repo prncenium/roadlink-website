@@ -1,0 +1,30 @@
+node_modules
+dist
+dist-ssr
+.vite
+*.local
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Source artwork is optimised into src/assets/*.webp via `npm run images`.
+# Keep the originals locally; they are not needed to build or run the site.
+src/assets/source/
+
+# Backend env (see server/README.md)
+server/.env

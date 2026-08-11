@@ -1,0 +1,20 @@
+{
+  "name": "roadlink-contact-api",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Minimal contact-form mail relay for the Road Link Consultancy Services site.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "check": "node src/verify.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "nodemailer": "^6.9.16"
+  }
+}
