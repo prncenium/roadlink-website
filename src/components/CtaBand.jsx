@@ -46,6 +46,10 @@ export default function CtaBand() {
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {site.contact.phone}
               </Button>
+              <Button href={site.contact.phoneAltHref} variant="onDark" size="lg">
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {site.contact.phoneAlt}
+              </Button>
             </div>
           </div>
         </Reveal>

@@ -32,7 +32,7 @@ const channels = [
   {
     id: 'phone',
     title: 'Call the office',
-    detail: 'Monday to Friday, 09:00 – 18:00.',
+    detail: 'Monday to Friday, 09:00 – 6:00.',
     contact: site.contact.phone,
     href: site.contact.phoneHref,
     contactAlt: site.contact.phoneAlt,

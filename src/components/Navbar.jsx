@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Menu, X, ArrowRight, Phone } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
 import { navItems } from '@/data/nav';
@@ -167,6 +167,27 @@ export default function Navbar() {
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   {site.contact.phone}
                 </Button>
+                <Button href={site.contact.phoneAltHref} variant="secondary" size="md" fullWidth>
+                  <Phone className="h-4 w-4" aria-hidden="true" />
+                  {site.contact.phoneAlt}
+                </Button>
+
+                <div className="mt-1 flex flex-col gap-2 border-t border-hairline pt-4">
+                  <a
+                    href={site.contact.emailHref}
+                    className="flex items-center gap-2 break-all rounded text-small text-body transition-colors duration-200 hover:text-ink"
+                  >
+                    <Mail className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                    {site.contact.email}
+                  </a>
+                  <a
+                    href={site.contact.emailAltHref}
+                    className="flex items-center gap-2 break-all rounded text-small text-body transition-colors duration-200 hover:text-ink"
+                  >
+                    <Mail className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                    {site.contact.emailAlt}
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

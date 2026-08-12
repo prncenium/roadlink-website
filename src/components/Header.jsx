@@ -38,6 +38,15 @@ export default function Header() {
             {site.contact.email}
           </a>
 
+          <a
+            href={site.contact.emailAltHref}
+            className="hidden items-center gap-2 rounded text-muted transition-colors duration-200 hover:text-ink xl:inline-flex"
+          >
+            <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="sr-only">Alternate email: </span>
+            {site.contact.emailAlt}
+          </a>
+
         </div>
       </div>
     </header>

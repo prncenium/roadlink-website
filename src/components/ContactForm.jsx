@@ -215,6 +215,10 @@ export default function ContactForm() {
             {sendError} You can also email us directly at{' '}
             <a href={site.contact.emailHref} className="font-medium underline underline-offset-2">
               {site.contact.email}
+            </a>{' '}
+            or{' '}
+            <a href={site.contact.emailAltHref} className="font-medium underline underline-offset-2">
+              {site.contact.emailAlt}
             </a>
             .
           </span>
