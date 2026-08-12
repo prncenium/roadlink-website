@@ -27,8 +27,8 @@ export const site = {
       country: 'Haryana, India',
     },
     hours: [
-      { day: 'Monday – Friday', time: '09:00 – 18:00' },
-      { day: 'Saturday', time: '10:00 – 14:00' },
+      { day: 'Monday – Friday', time: '09:00 – 6:00' },
+      { day: 'Saturday', time: '10:00 – 2:00' },
       { day: 'Sunday & public holidays', time: 'Closed' },
     ],
   },

@@ -105,7 +105,6 @@ export const heroStats = [
 /** Short factual lines used beneath the portfolio band. */
 export const companyFacts = [
   { id: 'established', label: 'Established', value: String(ESTABLISHED_YEAR) },
-  { id: 'turnover', label: 'Annual average turnover', value: '₹2 Cr+' },
   { id: 'accreditation', label: 'Quality accreditation', value: 'BSI Quality Assurance' },
   { id: 'team', label: 'Team strength', value: '50+ professionals' },
 ];

@@ -19,7 +19,7 @@ export default function StatsBand() {
           eyebrow="Portfolio by numbers"
           title="Where the work has been done"
           highlight="the work"
-          lead="Commissions delivered across five service lines for national and state highway authorities."
+          lead=""
           tone="dark"
           align="center"
         />
@@ -45,7 +45,7 @@ export default function StatsBand() {
         </RevealGroup>
 
         {/* Standing facts */}
-        <RevealGroup className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
           {companyFacts.map((fact) => (
             <RevealItem key={fact.id} className="bg-primary-dark px-6 py-6">
               <p className="font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">

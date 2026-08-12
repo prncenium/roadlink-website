@@ -20,7 +20,7 @@ export default function HowWeWork() {
       <SectionHeading
         id="how-we-work-heading"
         eyebrow="How we work"
-        title="A defined method, applied to every commission"
+        title="A defined method, applied to every Team"
         highlight="defined method"
         lead="Team assembly, site supervision, quality assurance and design technology follow written procedures — the same on a 13 km state highway package as on a 200 km national corridor."
         align="center"

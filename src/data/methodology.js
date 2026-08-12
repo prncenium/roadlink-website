@@ -10,7 +10,7 @@ export const methodology = [
     step: '01',
     title: 'Multi-disciplinary team assembly',
     summary:
-      'Every commission is staffed with a purpose-built team of local and expatriate consultants, led by a dedicated Project Manager who is an experienced Highway Engineer.',
+      'Every group is staffed with a purpose-built team of local and expatriate consultants, led by a dedicated Project Manager who is an experienced Highway Engineer.',
     points: [
       'A named Project Manager owns day-to-day administration and execution',
       'Core team supplemented by Transportation Planning, Bridges and Geotechnical specialists',

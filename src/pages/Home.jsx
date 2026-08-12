@@ -52,9 +52,9 @@ export default function Home() {
             <SectionHeading
               id="mandate-heading"
               eyebrow="Our mandate"
-              title="An independent check between public money and public roads"
+              title="An independent check on every road we help deliver"
               highlight="independent check"
-              lead="We verify that road works delivered with public funds meet the specifications they were paid to meet — before the asset is handed over, not after it fails."
+              lead="We verify that road works meet the specifications they were designed to meet — before the asset is handed over, not after it fails."
             />
 
             <Reveal delay={0.2} className="mt-9 flex flex-wrap items-center gap-3">
