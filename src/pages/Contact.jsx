@@ -14,18 +14,18 @@ const channels = [
     id: 'general',
     title: 'General enquiries',
     detail: 'Project enquiries, tender queries and all correspondence.',
-    contact: site.contact.email,
-    href: site.contact.emailHref,
-    contactAlt: site.contact.emailAlt,
-    hrefAlt: site.contact.emailAltHref,
+    contact: site.contact.emailAlt,
+    href: site.contact.emailAltHref,
     icon: Building2,
   },
   {
     id: 'hr',
     title: 'HR & careers',
     detail: 'Applications, CVs and recruitment enquiries.',
-    contact: site.contact.hrEmail,
-    href: site.contact.hrEmailHref,
+    contact: site.contact.email,
+    href: site.contact.emailHref,
+    contactAlt: site.contact.hrEmail,
+    hrefAlt: site.contact.hrEmailHref,
     icon: Briefcase,
   },
   {
@@ -173,7 +173,7 @@ export default function Contact() {
                   >
                     <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                     <span className="text-small">
-                      {site.contact.email}
+                      {site.contact.emailAlt}
                       <br />
                       <span className="text-muted">General enquiries</span>
                     </span>
@@ -187,7 +187,7 @@ export default function Contact() {
                     <span className="text-small">
                       {site.contact.hrEmail}
                       <br />
-                      <span className="text-muted">HR &amp; careers</span>
+                      <span className="text-muted">Recruitment</span>
                     </span>
                   </a>
                 </address>

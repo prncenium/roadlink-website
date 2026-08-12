@@ -27,6 +27,9 @@ const targets = {
   'process-diagram': { width: 1400, quality: 80 },
   'about-hero': { width: 2400, quality: 76 },
   'about-team': { width: 1400, quality: 78 },
+  // The source JPEG carries a printed border and white margin; trim it
+  // or the mark renders as a boxed card in the navbar.
+  logo: { width: 600, quality: 92, trim: 20 },
   'sectors-hero': { width: 2400, quality: 76 },
   'sectors-background': { width: 2400, quality: 70 },
   'sectors-capability': { width: 1400, quality: 78 },
@@ -50,7 +53,10 @@ for (const file of files) {
 
   const before = (await stat(inPath)).size;
 
-  await sharp(inPath)
+  let pipeline = sharp(inPath);
+  if (cfg.trim) pipeline = pipeline.trim({ threshold: cfg.trim });
+
+  await pipeline
     .resize({ width: cfg.width, withoutEnlargement: true })
     .webp({ quality: cfg.quality, effort: 6 })
     .toFile(outPath);
