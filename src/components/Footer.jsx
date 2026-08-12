@@ -24,7 +24,8 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Identity + newsletter */}
           <div className="lg:col-span-4">
-            <Logo tone="dark" />
+            
+<Logo  className="[&_img]:!h-16 sm:[&_img]:!h-20" />
 
             <p className="mt-6 max-w-sm text-small leading-relaxed text-white/50">
               {site.tagline}. Established 2016, empanelled with NHAI and State PWDs for road

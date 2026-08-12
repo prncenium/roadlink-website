@@ -110,7 +110,7 @@ export default function About() {
             <SectionHeading
               id="story-heading"
               eyebrow="Our story"
-              title="Established 2016, incorporated as a Partnership in 2018"
+              title="Established 2016, incorporated as a Partnership in 2016"
               highlight="Partnership"
               lead="The firm was founded to provide local planning, engineering design, project management and special advisory consultancy services."
             />
@@ -203,7 +203,7 @@ export default function About() {
 
         <Reveal delay={0.2} className="mt-8 flex justify-center">
           <Badge variant="default" icon={Handshake}>
-            Partnership firm since March 2018
+            Partnership firm since March 2016
           </Badge>
         </Reveal>
       </Section>

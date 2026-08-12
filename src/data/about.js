@@ -27,7 +27,7 @@ export const formation = [
   },
   {
     id: 'incorporated',
-    year: 'March 2018',
+    year: 'March 2016',
     title: 'Incorporated as a Partnership',
     detail:
       'The firm is formally incorporated as a Partnership, with Mr. Ankit Goyal as Managing Partner and Mr. Ashish Jain as Partner.',
