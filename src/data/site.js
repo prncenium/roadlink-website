@@ -67,13 +67,9 @@ export const site = {
     },
   ],
 
-  /* Small official chips shown in the header / hero / footer */
-  credentials: [
-    { label: 'Govt. Approved', detail: 'Registration No. MRTPW/INS/2019/0442' },
-    { label: 'ISO 9001:2015', detail: 'Quality Management Systems' },
-    { label: 'ISO/IEC 17025', detail: 'Testing & Calibration Laboratories' },
-    { label: 'NABL Accredited', detail: 'Materials Testing Laboratory' },
-  ],
+  /* Small official chips shown in the header / hero / footer.
+     Emptied deliberately — add entries here to bring the chips back. */
+  credentials: [],
 };
 
 export default site;

@@ -4,7 +4,6 @@ import ContactForm from '@/components/ContactForm';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
 import MapEmbed from '@/components/ui/MapEmbed';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { site } from '@/data/site';
@@ -215,12 +214,6 @@ export default function Contact() {
                   </dl>
                 </div>
 
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {site.credentials.slice(0, 2).map((c) => (
-                    <Badge key={c.label}>{c.label}</Badge>
-                  ))}
-                  <Badge variant="verified">Accessible entrance</Badge>
-                </div>
               </div>
 
             </div>
