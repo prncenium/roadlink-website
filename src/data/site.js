@@ -13,8 +13,10 @@ export const site = {
     phoneAlt: '+91 97295 27178',
     phoneAltHref: 'tel:+919729527178',
     helpline: 'Toll-free, 09:00–18:00 IST (Mon–Fri)',
-    email: 'roadlinkconsultancyservices@gmail.com',
-    emailHref: 'mailto:roadlinkconsultancyservices@gmail.com',
+    email: 'info@roadlinkconsultancy.in',
+    emailHref: 'mailto:info@roadlinkconsultancy.in',
+    emailAlt: 'roadlinkconsultancyservices@gmail.com',
+    emailAltHref: 'mailto:roadlinkconsultancyservices@gmail.com',
     hrEmail: 'roadlinkc@gmail.com',
     hrEmailHref: 'mailto:roadlinkc@gmail.com',
     address: {

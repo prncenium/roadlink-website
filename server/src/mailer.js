@@ -2,11 +2,10 @@ import nodemailer from 'nodemailer';
 import { escapeHtml, sanitiseHeader } from './validate.js';
 
 /**
- * Gmail SMTP transport.
+ * SMTP transport — Titan (GoDaddy) by default.
  *
- * SMTP_PASS must be a Google **App Password** (16 characters), not the account
- * password — Google blocks plain-password SMTP. Requires 2-Step Verification
- * on the account. See server/README.md.
+ * SMTP_PASS is the mailbox password set in Titan webmail. No app password or
+ * 2FA step is required, unlike Gmail.
  */
 let transporter;
 
@@ -19,7 +18,7 @@ export function getTransporter() {
   }
 
   transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    host: process.env.SMTP_HOST || 'smtpout.secureserver.net',
     port: Number(process.env.SMTP_PORT || 465),
     secure: String(process.env.SMTP_SECURE ?? 'true') === 'true',
     auth: { user: SMTP_USER, pass: SMTP_PASS },

@@ -1,20 +1,14 @@
 # Contact API
 
 Receives the website contact form and emails it to
-**roadlinkconsultancyservices@gmail.com**. No login, no database — one endpoint
+**info@roadlinkconsultancy.in**. No login, no database — one endpoint
 that relays mail.
 
-## 1. Create a Google App Password
+## 1. Mailbox
 
-Gmail rejects plain-password SMTP, so you need a 16-character App Password.
-
-1. The Gmail account must have **2-Step Verification** on:
-   <https://myaccount.google.com/signinoptions/two-step-verification>
-2. Create the password: <https://myaccount.google.com/apppasswords>
-3. Name it anything (e.g. "Website contact form") and copy the 16 characters.
-
-That password is equivalent to account access for mail — treat it like a
-credential, never commit it, and revoke it from the same page if it leaks.
+Sending goes through **Titan** (GoDaddy) using `info@roadlinkconsultancy.in`.
+No app password or 2FA step — just the mailbox password you set in Titan
+webmail. Host `smtp.titan.email`, port 465 (SSL).
 
 ## 2. Configure
 
@@ -23,8 +17,7 @@ cd server
 cp .env.example .env
 ```
 
-Fill in `SMTP_PASS` with the App Password (spaces removed). Leave the rest as-is
-for local work.
+Fill in `SMTP_PASS` with the Titan mailbox password. Leave the rest as-is.
 
 ## 3. Verify the credentials before anything else
 
@@ -33,9 +26,9 @@ npm install
 npm run check
 ```
 
-Expected: `SMTP OK — credentials accepted by smtp.gmail.com`.
-If it prints `535-5.7.8 BadCredentials`, `SMTP_PASS` is still the account
-password rather than an App Password.
+Expected: `SMTP OK — credentials accepted by smtp.titan.email`.
+If authentication fails, confirm the mailbox is active in GoDaddy and that the
+password matches Titan webmail.
 
 ## 4. Run
 
@@ -75,11 +68,11 @@ Any Node host works (Render, Railway, Fly, a VPS). Set the same env vars there,
 and:
 
 1. Add the live site to `ALLOWED_ORIGINS`, e.g.
-   `https://roadlinkconsultancy.com`.
+   `https://roadlinkconsultancy.in`.
 2. Set `VITE_API_BASE_URL` in the **frontend** build to the API's public URL,
-   e.g. `https://api.roadlinkconsultancy.com`. Without it the frontend posts to
+   e.g. `https://api.roadlinkconsultancy.in`. Without it the frontend posts to
    its own origin, which only works if you reverse-proxy `/api` to this service.
 
-Gmail SMTP allows roughly 500 messages/day. That is far above contact-form
-volume, but if this ever grows into bulk sending, move to a transactional
-provider (Resend, SES, Postmark) — only `mailer.js` would change.
+Titan allows a few hundred messages/day, far above contact-form volume. If this
+ever grows into bulk sending, move to a transactional provider — only
+`mailer.js` would change.

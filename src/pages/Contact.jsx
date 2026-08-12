@@ -17,6 +17,8 @@ const channels = [
     detail: 'Project enquiries, tender queries and all correspondence.',
     contact: site.contact.email,
     href: site.contact.emailHref,
+    contactAlt: site.contact.emailAlt,
+    hrefAlt: site.contact.emailAltHref,
     icon: Building2,
   },
   {

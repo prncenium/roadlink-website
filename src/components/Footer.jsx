@@ -204,6 +204,13 @@ export default function Footer() {
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
                 {site.contact.email}
               </a>
+              <a
+                href={site.contact.emailAltHref}
+                className="flex gap-2.5 break-all rounded transition-colors duration-200 hover:text-white"
+              >
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
+                {site.contact.emailAlt}
+              </a>
             </div>
 
           </div>
