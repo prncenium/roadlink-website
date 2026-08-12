@@ -9,6 +9,7 @@ const variants = {
   accent: 'border-accent/25 bg-accent-soft text-accent-ink',
   verified: 'border-verified/25 bg-verified-soft text-verified-ink',
   onDark: 'border-white/15 bg-white/5 text-white/70',
+  category: 'border-primary/20 bg-primary-50 text-primary',
 };
 
 export default function Badge({

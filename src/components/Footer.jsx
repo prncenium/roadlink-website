@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
-import Badge from '@/components/ui/Badge';
 import { site } from '@/data/site';
 import { footerColumns, socials, legalLinks } from '@/data/footer';
 
@@ -30,7 +29,7 @@ export default function Footer() {
     setEmail('');
   };
 
-  const { address } = site.contact;
+
 
   return (
     <footer className="on-dark relative overflow-hidden bg-ink text-white/60">
@@ -46,24 +45,17 @@ export default function Footer() {
             <Logo tone="dark" />
 
             <p className="mt-6 max-w-sm text-small leading-relaxed text-white/50">
-              {site.tagline}. An autonomous inspection body constituted under the{' '}
-              {site.department}.
+              {site.tagline}. Established 2016, empanelled with NHAI and State PWDs for road
+              safety, design, inspection and project management consultancy.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {site.credentials.slice(0, 3).map((c) => (
-                <Badge key={c.label} variant="onDark" title={c.detail}>
-                  {c.label}
-                </Badge>
-              ))}
-            </div>
 
             <form onSubmit={handleSubscribe} noValidate className="mt-10">
               <h2 className="font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
-                Circulars &amp; notices
+                Stay updated
               </h2>
               <label htmlFor="footer-email" className="mt-3 block text-small text-white/60">
-                Get tender notices and inspection circulars by email.
+                Subscribe to get project updates and notices by email.
               </label>
 
               <div className="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -153,22 +145,44 @@ export default function Footer() {
             </nav>
           ))}
 
-          {/* Contact */}
-          <div className="lg:col-span-2">
+          {/* Offices + contact */}
+          <div className="lg:col-span-4">
             <h2 className="font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
-              Head office
+              Offices
             </h2>
 
-            <address className="mt-5 flex flex-col gap-4 not-italic text-small text-white/60">
-              <span className="flex gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
-                <span>
-                  {address.line2}
-                  <br />
-                  {address.city} {address.postcode}
-                </span>
-              </span>
+            <div className="mt-5 flex flex-col gap-5">
+              {site.offices.map((office) => (
+                <address key={office.id} className="not-italic">
+                  <p className="font-mono text-eyebrow uppercase tracking-eyebrow text-white/45">
+                    {office.label}
+                  </p>
+                  <p className="mt-1.5 flex gap-2.5 text-small leading-relaxed text-white/60">
+                    <MapPin
+                      className={[
+                        'mt-0.5 h-4 w-4 shrink-0',
+                        office.status === 'current' ? 'text-accent' : 'text-white/30',
+                      ].join(' ')}
+                      aria-hidden="true"
+                    />
+                    <span>
+                      {office.organisation && (
+                        <>
+                          <span className="font-medium text-white">{office.organisation}</span>
+                          <br />
+                        </>
+                      )}
+                      {office.lines.join(', ')}
+                    </span>
+                  </p>
+                </address>
+              ))}
+            </div>
 
+            <h2 className="mt-8 font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
+              Contact
+            </h2>
+            <div className="mt-4 flex flex-col gap-3 text-small text-white/60">
               <a
                 href={site.contact.phoneHref}
                 className="flex gap-2.5 rounded transition-colors duration-200 hover:text-white"
@@ -176,7 +190,13 @@ export default function Footer() {
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
                 {site.contact.phone}
               </a>
-
+              <a
+                href={site.contact.phoneAltHref}
+                className="flex gap-2.5 rounded transition-colors duration-200 hover:text-white"
+              >
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
+                {site.contact.phoneAlt}
+              </a>
               <a
                 href={site.contact.emailHref}
                 className="flex gap-2.5 break-all rounded transition-colors duration-200 hover:text-white"
@@ -184,9 +204,9 @@ export default function Footer() {
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/30" aria-hidden="true" />
                 {site.contact.email}
               </a>
-            </address>
+            </div>
 
-            <h2 className="mt-9 font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
+            <h2 className="mt-8 font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
               Follow
             </h2>
             <ul className="mt-4 flex flex-wrap gap-2">

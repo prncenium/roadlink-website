@@ -42,7 +42,19 @@ export default function ProjectCard({ project }) {
   ].filter(Boolean);
 
   return (
-    <Card as="article" interactive accentLine className="group h-full p-6 lg:p-7">
+    <Card
+      as="article"
+      interactive
+      accentLine
+      className="group h-full p-6 lg:p-7"
+      // Clicking anywhere on the card reveals the full title. Clicks that
+      // originate on the button (or any link) are left alone, otherwise the
+      // two handlers would toggle twice and cancel out.
+      onClick={(event) => {
+        if (event.target.closest('button, a')) return;
+        setOpen((v) => !v);
+      }}
+    >
       {/* Top row: reference + status */}
       <div className="flex items-center justify-between gap-3">
         <span className="font-mono text-eyebrow uppercase tracking-eyebrow text-muted">
@@ -68,7 +80,7 @@ export default function ProjectCard({ project }) {
 
       {/* Category + mode + programme chips */}
       <div className="mt-4 flex flex-wrap gap-1.5">
-        {category && <Badge>{category.short}</Badge>}
+        {category && <Badge variant="category">{category.short}</Badge>}
         {project.mode && <Badge variant="accent">{project.mode}</Badge>}
         {project.programme && <Badge>{project.programme}</Badge>}
       </div>

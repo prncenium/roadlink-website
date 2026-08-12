@@ -8,8 +8,10 @@ export const site = {
   department: 'Road Safety, Design & Inspection Consultants',
 
   contact: {
-    phone: '+91 1800 270 4455',
-    phoneHref: 'tel:+9118002704455',
+    phone: '+91 81789 47588',
+    phoneHref: 'tel:+918178947588',
+    phoneAlt: '+91 97295 27178',
+    phoneAltHref: 'tel:+919729527178',
     helpline: 'Toll-free, 09:00–18:00 IST (Mon–Fri)',
     email: 'roadlinkconsultancyservices@gmail.com',
     emailHref: 'mailto:roadlinkconsultancyservices@gmail.com',

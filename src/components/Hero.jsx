@@ -62,8 +62,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.h1 {...rise(0.08)} id="hero-heading" className="mt-6 text-ink">
-              Every metre of public road,{' '}
-              <span className="accent-word">independently verified</span>.
+              Every metre of public road, <span className="accent-word">verified</span>.
             </motion.h1>
           </div>
 

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageHero from '@/components/PageHero';
 import CtaBand from '@/components/CtaBand';
 import Section from '@/components/ui/Section';
@@ -14,7 +15,7 @@ import aboutHero from '@/assets/about-hero.webp';
 import aboutTeam from '@/assets/about-team.webp';
 import { formation, partners, sectors, disciplines, methodology } from '@/data/about';
 import { ESTABLISHED_YEAR, yearsInPractice } from '@/data/stats';
-import { ArrowRight, Check, Handshake } from 'lucide-react';
+import { ArrowRight, Check, Handshake, ChevronRight } from 'lucide-react';
 
 export default function About() {
   useEffect(() => {
@@ -23,10 +24,67 @@ export default function About() {
 
   return (
     <>
-      {/* ── Full-bleed hero image ─────────────────────────────────────────
-          Edge to edge, above the page heading. Placeholder until the approved
-          photograph is supplied — swap for an <img> with object-cover. */}
-      <div className="relative h-[300px] w-full overflow-hidden bg-surface-2 sm:h-[400px] lg:h-[520px]">
+      {/* ── Hero ────────────────────────────────────────────────────────
+          Below lg the band + separate heading read as two disconnected blocks
+          on a narrow screen, so the copy sits over the photograph instead.
+          At lg and above the original desktop layout is used unchanged. */}
+
+      {/* Mobile / tablet: text over the image */}
+      <section
+        aria-labelledby="about-hero-heading-sm"
+        className="on-dark relative overflow-hidden bg-primary-dark lg:hidden"
+      >
+        <img
+          src={aboutHero}
+          alt="Four Road Link consultants in hi-vis vests and hard hats reviewing highway drawings on a site table beside a newly built carriageway."
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_62%]"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-primary-dark/75 via-primary-dark/90 to-primary-dark/95"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-dots-dark opacity-40 mask-fade-b"
+        />
+
+        <div className="container-page relative flex min-h-[440px] flex-col justify-end py-12 sm:min-h-[520px] sm:py-16">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-1.5 text-small text-white/80">
+              <li className="flex items-center gap-1.5">
+                <Link to="/" className="rounded transition-colors duration-200 hover:text-white">
+                  Home
+                </Link>
+                <ChevronRight className="h-3.5 w-3.5 text-white/40" aria-hidden="true" />
+              </li>
+              <li>
+                <span aria-current="page" className="text-white">
+                  About Us
+                </span>
+              </li>
+            </ol>
+          </nav>
+
+          <p className="eyebrow mt-6">
+            <span aria-hidden="true" className="h-px w-5 bg-current opacity-60" />
+            About the firm
+          </p>
+
+          <h1 id="about-hero-heading-sm" className="mt-4 text-white">
+            Planning, design and advisory for{' '}
+            <span className="accent-word">road infrastructure</span>
+          </h1>
+
+          <p className="measure mt-5 text-lead text-white/75">
+            Road Link Consultancy Services provides local planning, engineering design, project
+            management and special advisory consultancy across India and neighbouring countries.
+          </p>
+        </div>
+      </section>
+
+      {/* Desktop: unchanged — full-bleed image band above the light PageHero */}
+      <div className="relative hidden h-[520px] w-full overflow-hidden bg-surface-2 lg:block">
         <img
           src={aboutHero}
           alt="Four Road Link consultants in hi-vis vests and hard hats reviewing highway drawings on a site table beside a newly built carriageway."
@@ -35,13 +93,15 @@ export default function About() {
         />
       </div>
 
-      <PageHero
-        eyebrow="About the firm"
-        title="Planning, design and advisory for road infrastructure"
-        highlight="road infrastructure"
-        lead="Road Link Consultancy Services provides local planning, engineering design, project management and special advisory consultancy across India and neighbouring countries."
-        breadcrumb={[{ label: 'Home', to: '/' }, { label: 'About Us' }]}
-      />
+      <div className="hidden lg:block">
+        <PageHero
+          eyebrow="About the firm"
+          title="Planning, design and advisory for road infrastructure"
+          highlight="road infrastructure"
+          lead="Road Link Consultancy Services provides local planning, engineering design, project management and special advisory consultancy across India and neighbouring countries."
+          breadcrumb={[{ label: 'Home', to: '/' }, { label: 'About Us' }]}
+        />
+      </div>
 
       {/* ── Our story ─────────────────────────────────────────────────── */}
       <Section tone="surface" labelledBy="story-heading">

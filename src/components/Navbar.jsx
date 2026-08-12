@@ -86,11 +86,11 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-4 lg:flex">
             <a
-              href={site.contact.phoneHref}
+              href={site.contact.phoneAltHref}
               className="inline-flex items-center gap-2 rounded text-small text-muted transition-colors duration-200 hover:text-ink"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
-              {site.contact.phone}
+              {site.contact.phoneAlt}
             </a>
             <Button to="/contact" variant="primary" size="sm">
               Request Inspection

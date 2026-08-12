@@ -33,6 +33,8 @@ const channels = [
     detail: 'Monday to Friday, 09:00 – 18:00.',
     contact: site.contact.phone,
     href: site.contact.phoneHref,
+    contactAlt: site.contact.phoneAlt,
+    hrefAlt: site.contact.phoneAltHref,
     icon: Phone,
   },
 ];
@@ -86,6 +88,16 @@ export default function Contact() {
                       >
                         {channel.contact}
                       </a>
+                      {channel.contactAlt && (
+                        <a
+                          href={channel.hrefAlt}
+                          className="mt-1.5 block break-all rounded text-small font-medium text-ink
+                                     underline-offset-4 transition-colors duration-200 hover:text-accent-ink hover:underline
+                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                        >
+                          {channel.contactAlt}
+                        </a>
+                      )}
                     </div>
                   </div>
                 </Card>
@@ -139,6 +151,18 @@ export default function Contact() {
                       {site.contact.phone}
                       <br />
                       <span className="text-muted">{site.contact.helpline}</span>
+                    </span>
+                  </a>
+
+                  <a
+                    href={site.contact.phoneAltHref}
+                    className="flex gap-3.5 rounded text-body transition-colors duration-200 hover:text-ink"
+                  >
+                    <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                    <span className="text-small">
+                      {site.contact.phoneAlt}
+                      <br />
+                      <span className="text-muted">Alternate line</span>
                     </span>
                   </a>
 

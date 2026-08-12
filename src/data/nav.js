@@ -3,9 +3,9 @@
  */
 export const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
   { label: 'Sectors', to: '/sectors' },
   { label: 'Projects', to: '/projects' },
+  { label: 'About Us', to: '/about' },
   { label: 'Contact Us', to: '/contact' },
 ];
 

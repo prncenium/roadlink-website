@@ -71,7 +71,7 @@ export default function Sectors() {
       {/* ── Overview + jump navigation ─────────────────────────────── */}
       <Section tone="white" labelledBy="overview-heading">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <SectionHeading
               id="overview-heading"
               eyebrow="Overview"
@@ -80,7 +80,7 @@ export default function Sectors() {
               lead="Each sector below lists its disciplines exactly as they sit in the firm's capability statement, so a client can confirm scope before appointment."
             />
 
-            <RevealGroup className="mt-10 grid grid-cols-3 gap-6">
+            <RevealGroup className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               <RevealItem className="border-t border-hairline pt-4">
                 <StatCounter value={sectorTotals.sectors} label="Sectors" />
               </RevealItem>
@@ -94,7 +94,7 @@ export default function Sectors() {
           </div>
 
           {/* Jump nav */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <p className="font-mono text-eyebrow uppercase tracking-eyebrow text-muted">
               Jump to a sector
             </p>
@@ -103,11 +103,11 @@ export default function Sectors() {
               {sectors.map((sector) => {
                 const Icon = sector.icon;
                 return (
-                  <RevealItem as="li" key={sector.id} className="group flex">
+                  <RevealItem as="li" key={sector.id} className="group flex min-w-0">
                     <button
                       type="button"
                       onClick={() => goToSector(sector.id)}
-                      className="flex w-full cursor-pointer items-center gap-3.5 rounded-2xl border border-hairline bg-white px-4 py-3 text-left
+                      className="flex w-full min-w-0 cursor-pointer items-center gap-3 rounded-2xl border border-hairline bg-white px-4 py-3 text-left sm:gap-3.5
                                  transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lift
                                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                     >
@@ -121,7 +121,7 @@ export default function Sectors() {
                       >
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </span>
-                      <span className="min-w-0 flex-1 truncate text-small font-medium text-ink">
+                      <span className="min-w-0 flex-1 text-small font-medium text-ink">
                         {sector.title}
                       </span>
                       <ArrowUpRight
@@ -160,7 +160,7 @@ export default function Sectors() {
       {/* ── Closing image slot + CTA ───────────────────────────────── */}
       <Section tone="white" labelledBy="capability-heading">
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-6">
+          <Reveal className="min-w-0 lg:col-span-6">
             <img
               src={sectorsCapability}
               alt="Two engineers in hi-vis vests reviewing a rolled highway drawing and a tablet on a site table beside a carriageway."
@@ -170,7 +170,7 @@ export default function Sectors() {
             />
           </Reveal>
 
-          <div className="lg:col-span-6">
+          <div className="min-w-0 lg:col-span-6">
             <SectionHeading
               id="capability-heading"
               eyebrow="Scope confirmation"

@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import { site } from '@/data/site';
 
 /**
- * Portal identity — inline SVG emblem + wordmark.
- * `tone` flips the wordmark for dark surfaces.
+ * Portal identity — inline SVG emblem + two-line wordmark.
+ *
+ * The full trading name is long, so it is set on two lines: the distinctive
+ * half in the display face, the descriptor beneath it in mono. The descriptor
+ * drops away below `sm` where the navbar has no room for it.
  */
 export default function Logo({ tone = 'light', compact = false, className = '' }) {
   const isDark = tone === 'dark';
@@ -14,7 +17,7 @@ export default function Logo({ tone = 'light', compact = false, className = '' }
       className={[
         'group inline-flex items-center gap-3 rounded-xl',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
-        isDark ? 'focus-visible:ring-offset-primary-dark' : 'focus-visible:ring-offset-white',
+        isDark ? 'focus-visible:ring-offset-ink' : 'focus-visible:ring-offset-white',
         className,
       ].join(' ')}
       aria-label={`${site.name} — go to home page`}
@@ -34,23 +37,30 @@ export default function Logo({ tone = 'light', compact = false, className = '' }
             strokeWidth="1.8"
             strokeLinejoin="round"
           />
-          <path d="M16 9 v3 M16 15 v3 M16 21 v3" stroke="#FF6B35" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M16 9 v3 M16 15 v3 M16 21 v3"
+            stroke="#FF6B35"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </svg>
       </span>
 
-      <span className="flex min-w-0 flex-col leading-none">
+      {/* aria-hidden: the accessible name already comes from the link label,
+          so the split wordmark is not announced twice. */}
+      <span aria-hidden="true" className="flex min-w-0 flex-col leading-none">
         <span
           className={[
-            'font-display font-bold tracking-[-0.03em]',
-            compact ? 'text-base' : 'text-lg',
+            'font-display font-bold tracking-[-0.02em]',
+            compact ? 'text-[0.9375rem]' : 'text-base',
             isDark ? 'text-white' : 'text-ink',
           ].join(' ')}
         >
-          {site.shortName}
+          Road Link
         </span>
         <span
           className={[
-            'mt-1 hidden truncate font-mono text-[0.625rem] uppercase tracking-eyebrow lg:block',
+            'mt-1 hidden whitespace-nowrap font-mono text-[0.5625rem] uppercase tracking-[0.14em] sm:block',
             isDark ? 'text-white/65' : 'text-muted',
           ].join(' ')}
         >
