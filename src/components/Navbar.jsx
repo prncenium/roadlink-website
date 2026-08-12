@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, Mail, ChevronDown } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
 import { navItems } from '@/data/nav';
@@ -18,6 +18,7 @@ import { site } from '@/data/site';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const toggleRef = useRef(null);
   const panelRef = useRef(null);
   const { pathname } = useLocation();
@@ -33,6 +34,10 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!open) setContactOpen(false);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -158,36 +163,67 @@ export default function Navbar() {
                 ))}
               </ul>
 
-              <div className="mt-5 flex flex-col gap-3">
+              {/* Contact disclosure — keeps the panel short while still
+                  exposing every number and address on a phone. */}
+              <div className="mt-5 border-t border-hairline pt-4">
+                <button
+                  type="button"
+                  onClick={() => setContactOpen((v) => !v)}
+                  aria-expanded={contactOpen}
+                  aria-controls="mobile-contact"
+                  className="flex min-h-[48px] w-full cursor-pointer items-center gap-3 rounded-xl px-4
+                             text-base font-medium text-ink transition-colors duration-200 hover:bg-surface
+                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                  <span className="flex-1 text-left">Call or email us</span>
+                  <ChevronDown
+                    className={[
+                      'h-4 w-4 shrink-0 text-muted transition-transform duration-300 ease-out',
+                      contactOpen ? 'rotate-180' : '',
+                    ].join(' ')}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {contactOpen && (
+                    <motion.ul
+                      id="mobile-contact"
+                      initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
+                      animate={prefersReducedMotion ? {} : { height: 'auto', opacity: 1 }}
+                      exit={prefersReducedMotion ? {} : { height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      {[
+                        { id: 'p1', icon: Phone, label: site.contact.phone, href: site.contact.phoneHref },
+                        { id: 'p2', icon: Phone, label: site.contact.phoneAlt, href: site.contact.phoneAltHref },
+                        { id: 'e1', icon: Mail, label: site.contact.email, href: site.contact.emailHref },
+                        { id: 'e2', icon: Mail, label: site.contact.emailAlt, href: site.contact.emailAltHref },
+                      ].map(({ id, icon: Icon, label, href }) => (
+                        <li key={id}>
+                          <a
+                            href={href}
+                            className="flex min-h-[48px] items-center gap-3 break-all rounded-xl px-4 text-small
+                                       text-body transition-colors duration-200 hover:bg-surface hover:text-ink
+                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                          >
+                            <Icon className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                            {label}
+                          </a>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="mt-4">
                 <Button to="/contact" variant="primary" size="md" fullWidth>
-                  Request Inspection
+                  Start an enquiry
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Button>
-                <Button href={site.contact.phoneHref} variant="secondary" size="md" fullWidth>
-                  <Phone className="h-4 w-4" aria-hidden="true" />
-                  {site.contact.phone}
-                </Button>
-                <Button href={site.contact.phoneAltHref} variant="secondary" size="md" fullWidth>
-                  <Phone className="h-4 w-4" aria-hidden="true" />
-                  {site.contact.phoneAlt}
-                </Button>
-
-                <div className="mt-1 flex flex-col gap-2 border-t border-hairline pt-4">
-                  <a
-                    href={site.contact.emailHref}
-                    className="flex items-center gap-2 break-all rounded text-small text-body transition-colors duration-200 hover:text-ink"
-                  >
-                    <Mail className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
-                    {site.contact.email}
-                  </a>
-                  <a
-                    href={site.contact.emailAltHref}
-                    className="flex items-center gap-2 break-all rounded text-small text-body transition-colors duration-200 hover:text-ink"
-                  >
-                    <Mail className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
-                    {site.contact.emailAlt}
-                  </a>
-                </div>
               </div>
             </div>
           </motion.div>

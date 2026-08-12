@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import { site } from '@/data/site';
 import { footerColumns, legalLinks } from '@/data/footer';
@@ -10,24 +9,7 @@ import { footerColumns, legalLinks } from '@/data/footer';
  * contact block, socials and a legal bar.
  */
 export default function Footer() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | error | done
   const year = new Date().getFullYear();
-
-  const handleSubscribe = (event) => {
-    event.preventDefault();
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
-
-    if (!valid) {
-      setStatus('error');
-      return;
-    }
-
-    // No backend yet — the Express/MERN API will consume this payload.
-    console.log('[newsletter] subscribe payload:', { email: email.trim() });
-    setStatus('done');
-    setEmail('');
-  };
 
 
 
@@ -50,66 +32,24 @@ export default function Footer() {
             </p>
 
 
-            <form onSubmit={handleSubscribe} noValidate className="mt-10">
+            <div className="mt-10">
               <h2 className="font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
                 Stay updated
               </h2>
-              <label htmlFor="footer-email" className="mt-3 block text-small text-white/60">
-                Subscribe to get project updates and notices by email.
-              </label>
-
-              <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                <input
-                  id="footer-email"
-                  name="email"
-                  type="email"
-                  inputMode="email"
-                  autoComplete="email"
-                  placeholder="your.name@department.gov"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (status !== 'idle') setStatus('idle');
-                  }}
-                  aria-invalid={status === 'error' ? 'true' : undefined}
-                  aria-describedby="footer-email-status"
-                  className={[
-                    'min-h-[50px] w-full rounded-xl border bg-white/[0.06] px-4 py-3 text-base text-white',
-                    'placeholder:text-white/30 transition-colors duration-200',
-                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                    status === 'error' ? 'border-accent' : 'border-white/12 hover:border-white/25',
-                  ].join(' ')}
-                />
-                <button
-                  type="submit"
-                  className="inline-flex min-h-[50px] cursor-pointer items-center justify-center gap-2 rounded-xl
-                             bg-accent px-5 text-small font-medium text-white transition-all duration-200
-                             hover:-translate-y-0.5 hover:bg-accent-hover
-                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                >
-                  Subscribe
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </button>
-              </div>
-
-              <p
-                id="footer-email-status"
-                role="status"
-                aria-live="polite"
-                className={[
-                  'mt-2.5 flex items-center gap-1.5 text-small',
-                  status === 'error' ? 'text-accent' : 'text-verified',
-                ].join(' ')}
-              >
-                {status === 'error' && 'Enter a valid email address.'}
-                {status === 'done' && (
-                  <>
-                    <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                    Subscribed. A confirmation has been queued.
-                  </>
-                )}
+              <p className="mt-3 text-small text-white/60">
+                Get project updates and notices by email.
               </p>
-            </form>
+              <Link
+                to="/contact"
+                className="mt-4 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl
+                           bg-accent px-5 text-small font-medium text-white transition-all duration-200
+                           hover:-translate-y-0.5 hover:bg-accent-hover
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              >
+                Subscribe
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
 
           {/* Link columns */}
