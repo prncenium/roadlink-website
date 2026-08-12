@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import { site } from '@/data/site';
-import { footerColumns, socials, legalLinks } from '@/data/footer';
+import { footerColumns, legalLinks } from '@/data/footer';
 
 /**
  * Footer — dark, spacious, hairline-separated. Newsletter, link columns,
@@ -206,25 +206,6 @@ export default function Footer() {
               </a>
             </div>
 
-            <h2 className="mt-8 font-mono text-eyebrow uppercase tracking-eyebrow text-white/65">
-              Follow
-            </h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {socials.map(({ id, label, href, icon: Icon }) => (
-                <li key={id}>
-                  <a
-                    href={href}
-                    aria-label={label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12
-                               text-white/50 transition-colors duration-200
-                               hover:border-white/30 hover:bg-white/5 hover:text-white
-                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                  >
-                    <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

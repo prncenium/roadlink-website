@@ -60,7 +60,7 @@ export default function Logo({ tone = 'light', compact = false, className = '' }
         </span>
         <span
           className={[
-            'mt-1 hidden whitespace-nowrap font-mono text-[0.5625rem] uppercase tracking-[0.14em] sm:block',
+            'mt-1 whitespace-nowrap font-mono text-[0.5625rem] uppercase tracking-[0.12em]',
             isDark ? 'text-white/65' : 'text-muted',
           ].join(' ')}
         >
