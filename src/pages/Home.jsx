@@ -8,7 +8,7 @@ import CtaBand from '@/components/CtaBand';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
-import MapEmbed from '@/components/ui/MapEmbed';
+
 import Badge from '@/components/ui/Badge';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -182,10 +182,10 @@ export default function Home() {
           </div>
 
           <Reveal delay={0.1} className="lg:col-span-7">
-            <MapEmbed
-              query={site.mapQuery}
-              label="Map showing the Road Link Consultancy Services office at Sector-37, One City, Rohtak"
-              ratio="aspect-[4/3]"
+            <img
+              src="https://res.cloudinary.com/dbtfi1rbi/image/upload/v1786601630/Screenshot_2026-08-13_114330_zfjrzq.png"
+              alt="Office and registered addresses"
+              className="w-full rounded-lg object-cover"
             />
           </Reveal>
         </div>

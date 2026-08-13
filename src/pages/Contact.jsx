@@ -4,7 +4,7 @@ import ContactForm from '@/components/ContactForm';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Card from '@/components/ui/Card';
-import MapEmbed from '@/components/ui/MapEmbed';
+
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import { site } from '@/data/site';
 import { MapPin, Phone, Mail, Clock, Building2, Briefcase, Navigation } from 'lucide-react';
@@ -221,34 +221,7 @@ export default function Contact() {
         </div>
       </Section>
 
-      {/* Map */}
-      <Section tone="white" labelledBy="map-heading">
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <SectionHeading
-            id="map-heading"
-            eyebrow="Find us"
-            title="Head office location"
-            highlight="location"
-            lead="Public Works Bhavan is served by the Sector 21 metro station. Visitor parking is available at Gate 3."
-            className="md:max-w-2xl"
-          />
 
-          <Reveal delay={0.1}>
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface px-4 py-2.5 font-mono text-small tabular-nums text-body">
-              <Navigation className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-              28.5921° N, 77.1734° E
-            </span>
-          </Reveal>
-        </div>
-
-        <Reveal delay={0.15} className="mt-12">
-          <MapEmbed
-            query={site.mapQuery}
-            label="Map showing the Road Link Consultancy Services office at Sector-37, One City, Rohtak"
-            ratio="aspect-[21/9]"
-          />
-        </Reveal>
-      </Section>
     </>
   );
 }
