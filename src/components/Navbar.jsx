@@ -76,7 +76,10 @@ export default function Navbar() {
             scrolled ? 'py-3' : 'py-4',
           ].join(' ')}
         >
-          <Logo compact={scrolled} />
+          <div className="flex flex-col items-start">
+            <Logo compact={scrolled} />
+            <p className="text-xs text-muted mt-0.5">Roadlink consultancy services</p>
+          </div>
 
           {/* Desktop links */}
           <ul className="hidden items-center gap-10 lg:flex">
