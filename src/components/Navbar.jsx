@@ -78,7 +78,7 @@ export default function Navbar() {
         >
           <div className="flex flex-col items-start">
             <Logo compact={scrolled} />
-            <p className="text-xs text-muted mt-0.5">Roadlink consultancy services</p>
+            <p className="text-xs font-semibold text-muted mt-0.5">Roadlink consultancy services</p>
           </div>
 
           {/* Desktop links */}
